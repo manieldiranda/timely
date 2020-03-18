@@ -24,6 +24,7 @@
     "eject": "frontend/node_modules/.bin/react-scripts eject"
   },
   "engines": {
+      "node:": "12.x",
       "yarn": "1.19.1",
       "npm": "6.4.1"
   },
