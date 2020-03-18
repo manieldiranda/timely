@@ -1,0 +1,15 @@
+body{
+    background-color: #282c34;
+}
+
+.logInFormCard{
+    width: 50%;
+    margin: auto;
+    margin-top:50px;
+
+}
+
+.logInForm{
+    width:75%;
+    margin:auto;
+}

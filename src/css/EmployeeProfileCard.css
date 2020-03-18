@@ -1,0 +1,10 @@
+.employeeCard:hover{
+    transition-duration: 0.3s;
+    background-color: #d6d8d9!important;
+    color:#1b1e21 !important;
+    cursor: pointer !important;
+}
+/*CLASSNAME FOR LINK CONTAINER SINCE DEFAULT IS WHITE(SEE TIMELY LOGO AT TOP RIGHT CORNER*/
+.link{
+    color:#1b1e21 !important;
+}

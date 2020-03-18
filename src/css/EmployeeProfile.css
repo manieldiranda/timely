@@ -1,0 +1,18 @@
+.deleteButton{
+    margin-top:5px
+}
+
+.timeEntryDetail:hover{
+    cursor: pointer !important;
+}
+
+.goBackButton{
+    width:100%;
+    margin-top:20px;
+}
+
+.goBackButtonContainer{
+
+    width:75%;
+    margin:auto !important;
+}

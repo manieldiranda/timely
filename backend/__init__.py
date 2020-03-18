@@ -1,0 +1,1 @@
+default_app_config = 'timely_backend.apps.timelyBackEndConfig'
