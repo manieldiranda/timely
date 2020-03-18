@@ -19,6 +19,8 @@ from django.conf.urls import url
 from rest_framework import routers                    # add this
 from timely_backend import views
 from rest_framework_jwt.views import obtain_jwt_token
+from django.views.generic import TemplateView
+
 
 # add this
 
