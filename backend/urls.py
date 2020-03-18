@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.conf.urls import url
 from rest_framework import routers                    # add this
 from timely_backend import views
@@ -34,4 +34,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('auth-get-token/', obtain_jwt_token),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
+
 ]
