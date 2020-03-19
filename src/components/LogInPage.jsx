@@ -80,7 +80,7 @@ class LogInPage extends Component {
 
                 <Alert variant={'info'} className={'demoModeMessage'}>
                     <b>Demo Mode</b>
-                    <p>To use as admin: username & password is "admin" <br/> To use as employee: username & password is "admin" </p>
+                    <p>To use as admin: username/password is "admin" <br/> To use as employee: username/password is "employee" </p>
 
                 </Alert>
                 <Card className="logInFormCard" bg="dark" text="white" style={{width: '50%'}}>

@@ -190,17 +190,26 @@ class EmployeeHomePage extends Component {
                                     <Container>
   <Row>
     <Col className={'buttonColumn'} sm={12}md={6}>  {this.state.profile.clocked_in == true ? (
-                                            <Button variant="primary" size="lg" disabled>
+                                            <Button variant="primary"  className={"timeEntryButton"} size="lg" disabled>
                                                 Clocked In
                                             </Button>) : (
                                             <Button onClick={this.clockIn} className={"timeEntryButton"} variant="primary"
                                                     size="lg">
                                                 Clock In
-                                            </Button>)}</Col>
-    <Col  className={'buttonColumn'}  sm={12}md={6}>    <Button onClick={this.clockOut} className={"timeEntryButton"} variant="secondary"
-                                                size="lg">
-                                            Clock Out
-                                        </Button></Col>
+                                            </Button>)}
+    </Col>
+    <Col  className={'buttonColumn'}  sm={12}md={6}>
+
+{this.state.profile.clocked_in == false ? (
+                                            <Button variant="secondary"  className={"timeEntryButton"} size="lg" disabled>
+                                                Clocked Out
+                                            </Button>) : (
+                                            <Button onClick={this.clockOut} className={"timeEntryButton"} variant="secondary"
+                                                    size="lg">
+                                                Clock Out
+                                            </Button>)}
+
+</Col>
   </Row>
 
 </Container>
