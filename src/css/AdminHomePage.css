@@ -4,3 +4,25 @@
     margin-top:50px;
 
 }
+
+@media  (max-width: 1200px) {
+.adminPanelCard{
+    width: 90% !important;
+    margin: auto;
+    margin-top:50px;
+
+}
+}
+
+@media  (max-width: 750px) {
+.clockIn {
+    width:23%;
+}.clockOut{
+    width:23%;
+}
+.late{
+    width:47%;
+}
+
+}
+

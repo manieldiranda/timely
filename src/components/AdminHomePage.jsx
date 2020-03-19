@@ -59,7 +59,7 @@ class AdminHomePage extends Component {
             <div>
                 <NavBar logged_in={this.props.logged_in}/>
                 <Card className="adminPanelCard" bg="dark" text="white" style={{width: '50%'}}>
-                    <Card.Header> <h2> Welcome to Timely Admin, {this.props.first_name} </h2></Card.Header>
+                    <Card.Header> <h2> Welcome to Timely, Admin. {this.props.first_name} </h2></Card.Header>
                         <Card.Body>
                             <Card.Text>
                                              <h3> Here is your team: </h3>

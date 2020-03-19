@@ -9,6 +9,9 @@ import axios from "axios";
 import Accordion from "react-bootstrap/Accordion";
 import Moment from "react-moment";
 import Alert from "react-bootstrap/Alert";
+import Overlay from 'react-bootstrap/Overlay'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
 
 const BASE_API_URL = process.env.REACT_APP_BASE_URL;
 
@@ -30,7 +33,7 @@ class EmployeeProfile extends Component {
 
 
     componentDidMount() {
-  this.getProfileInfo();
+        this.getProfileInfo();
 
 
     }
@@ -43,17 +46,17 @@ class EmployeeProfile extends Component {
         console.log(time_entry_id);
         let time_entry = JSON.stringify(time_entry_id);
         console.log("DELETING")
-         axios.delete(`${BASE_API_URL}api/time_entries/${time_entry}/`, {headers: {"Authorization": `Bearer ${localStorage.getItem('token')}`}})
+        axios.delete(`${BASE_API_URL}api/time_entries/${time_entry}/`, {headers: {"Authorization": `Bearer ${localStorage.getItem('token')}`}})
             .then((response) => {
                 console.log(response);
                 this.getProfileInfo();
-    })
+            })
 
     };
 
     getProfileInfo = () => {
         const id = this.props.match.params.id;
-            axios.get(`${BASE_API_URL}api/employees/${id}/`, {
+        axios.get(`${BASE_API_URL}api/employees/${id}/`, {
             params: {}
         })
         //setting profile information in state
@@ -76,7 +79,7 @@ class EmployeeProfile extends Component {
     }
 
     goBack = () => {
-                        this.props.history.push("/home");
+        this.props.history.push("/home");
 
     }
 
@@ -128,7 +131,7 @@ class EmployeeProfile extends Component {
                                                     </div>
                                                     <div className={"late timeEntryDetail"}>
 
-                                                        {`${this.props.late}` == true ? (
+                                                        {`${this.props.late}` === true ? (
                                                             <div className={'alertContainer'}>
                                                                 <Alert className={"lateAlert"}
                                                                        variant={'danger'}>
@@ -145,7 +148,9 @@ class EmployeeProfile extends Component {
 
                                                     </div>
                                                     <div className={"deleteButtonContainer"}>
-                                                    <Button onClick={(e)=>this.deleteTimeEntry(time_entry_id)} className={"deleteButton"} variant="danger"><b>x</b></Button>
+                                                        <Button onClick={(e) => this.deleteTimeEntry(time_entry_id)}
+                                                                className={"deleteButton"}
+                                                                variant="danger"><b>x</b></Button>
                                                     </div>
                                                 </div>
                                             </Card.Body>
@@ -156,8 +161,19 @@ class EmployeeProfile extends Component {
                                 )
                             })}
                         </Accordion>
+
                         <div className={"goBackButtonContainer"}>
-                        <Button onClick={this.goBack} className={"goBackButton"} variant="primary">Go Back</Button>
+                            <OverlayTrigger
+                                placement={'top'}
+                                overlay={
+                                    <Tooltip>
+                                        Delete Time Entry
+                                    </Tooltip>
+                                }
+                            >
+                                <Button onClick={this.goBack} className={"goBackButton"} variant="primary">Go
+                                    Back</Button>
+                            </OverlayTrigger>
                         </div>
                     </Card.Body>
 

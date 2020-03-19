@@ -10,6 +10,9 @@ import Moment from 'react-moment';
 import Alert from 'react-bootstrap/Alert'
 import axios from "axios";
 import Collapse from 'react-bootstrap/Collapse'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 const BASE_API_URL = process.env.REACT_APP_BASE_URL;
 
@@ -180,20 +183,29 @@ class EmployeeHomePage extends Component {
                                 </Card.Text>
                                 <div className={"timeEntryButtons"}>
                                     <div className={"timeEntryButtonsContainer"}>
-                                        {this.state.profile.clocked_in == true ? (
+
+
+
+                                    </div>
+                                    <Container>
+  <Row>
+    <Col className={'buttonColumn'} sm={12}md={6}>  {this.state.profile.clocked_in == true ? (
                                             <Button variant="primary" size="lg" disabled>
                                                 Clocked In
                                             </Button>) : (
                                             <Button onClick={this.clockIn} className={"timeEntryButton"} variant="primary"
                                                     size="lg">
                                                 Clock In
-                                            </Button>)}
-
-                                        <Button onClick={this.clockOut} className={"timeEntryButton"} variant="secondary"
+                                            </Button>)}</Col>
+    <Col  className={'buttonColumn'}  sm={12}md={6}>    <Button onClick={this.clockOut} className={"timeEntryButton"} variant="secondary"
                                                 size="lg">
                                             Clock Out
-                                        </Button>
-                                    </div>
+                                        </Button></Col>
+  </Row>
+
+</Container>
+
+
                                 </div>
                                 <div className={"previousShifts"}>
                                     <h1> Previous Shifts: </h1>

@@ -13,3 +13,21 @@ body{
     width:75%;
     margin:auto;
 }
+
+@media (max-width: 1000px){
+    .logInFormCard{
+    width: 90% !important;
+    margin: auto;
+    margin-top:50px;
+
+}
+}
+@media (min-width: 1001px) and (max-width: 1300px ){
+    .logInFormCard{
+    width: 70% !important;
+    margin: auto;
+    margin-top:50px;
+
+}
+}
+
