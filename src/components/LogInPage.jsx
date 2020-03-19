@@ -5,12 +5,12 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
+import Alert from 'react-bootstrap/Alert'
 import {withRouter} from "react-router-dom";
 
 
+
 const BASE_API_URL = process.env.REACT_APP_BASE_URL;
-
-
 
 
 class LogInPage extends Component {
@@ -77,6 +77,12 @@ class LogInPage extends Component {
         return (
             <div>
                 <NavBar logged_in={false}/>
+
+                <Alert variant={'info'} className={'demoModeMessage'}>
+                    <b>Demo Mode</b>
+                    <p>To use as admin: username & password is "admin" <br/> To use as employee: username & password is "admin" </p>
+
+                </Alert>
                 <Card className="logInFormCard" bg="dark" text="white" style={{width: '50%'}}>
 
                     <Card.Header>
