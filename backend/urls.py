@@ -26,7 +26,9 @@ from django.views.generic import TemplateView
 
 router = routers.DefaultRouter()                      # add this
 router.register(r'time_entries', views.TimeEntryView, 'TimeEntry',)     # add this
-router.register(r'employees', views.EmployeeProfileView, 'EmployeeProfile',)     # add this
+router.register(r'employees', views.EmployeeProfileView, 'EmployeeProfile',)
+router.register(r'users', views.UserViewSet),
+# add this
 
 
 

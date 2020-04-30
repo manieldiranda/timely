@@ -27,6 +27,7 @@ class Router extends Component {
         return (
             <div className="App">
                 <BrowserRouter>
+
                     <Route
                         exact
                         path={"/"}
@@ -37,6 +38,7 @@ class Router extends Component {
                         )}
                     />
                     <Route
+                        exact
                         path={"/home/"}
                         render={props => (
                             <HomePageContainer
@@ -44,7 +46,7 @@ class Router extends Component {
                             />
                         )}
                     />
-                     <Route path={"/employee/:id"} component={EmployeeProfile}/>
+                     <Route exact path={"/employee/:id"} component={EmployeeProfile}/>
 
 
 

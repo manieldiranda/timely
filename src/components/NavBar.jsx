@@ -32,7 +32,7 @@ class NavBar extends Component {
 
                     </Nav>
 
-                    { BUILD_VERSION == "Development" ? ( <Badge className={"devFlag"} variant="info">Development</Badge>) : null }
+
 
                     {this.props.logged_in == true ? (
                         <Button onClick={this.logOutButtonClick} variant="outline-primary" size="sm">

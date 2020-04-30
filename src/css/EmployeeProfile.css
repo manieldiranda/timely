@@ -1,18 +1,13 @@
-.deleteButton{
-    margin-top:5px
+.detailChoiceButtonsContainer {
+text-align: center;
+    padding-bottom: 2em;
+    padding-top: 2em;
 }
 
-.timeEntryDetail:hover{
-    cursor: pointer !important;
+.graphColumn {
+    padding-bottom:2em
 }
 
-.goBackButton{
-    width:100%;
-    margin-top:20px;
-}
-
-.goBackButtonContainer{
-
-    width:75%;
-    margin:auto !important;
+.detailsContainer h3{
+    padding-bottom:1em;
 }

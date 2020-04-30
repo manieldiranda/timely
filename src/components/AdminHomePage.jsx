@@ -13,19 +13,25 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import Accordion from "react-bootstrap/Accordion";
 import Moment from "react-moment";
-import Alert from "react-bootstrap/Alert";
+import Alert from "react-bootstrap/Alert"
+import Spinner from 'react-bootstrap/Spinner'
+import {motion} from "framer-motion";
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
 const BASE_API_URL = process.env.REACT_APP_BASE_URL;
 
 
 class AdminHomePage extends Component {
 
-     constructor(props) {
+    constructor(props) {
         super(props);
 
         this.state = {
             api: 'http://localhost:8000/',
-            employeeData:[]
+            loading: true,
+            employeeData: []
 
         }
 
@@ -42,50 +48,87 @@ class AdminHomePage extends Component {
             .then((response) => {
                 let employeeData = response.data;
                 this.setState({
-                  employeeData: employeeData
+                    employeeData: employeeData
                 });
 
             })
             .finally(() => {
-                console.log(this.state.employee)
+                this.setState({
+                    loading: false
+                })
             });
     };
 
 
-
-
     render() {
         return (
+
             <div>
-                <NavBar logged_in={this.props.logged_in}/>
-                <Card className="adminPanelCard" bg="dark" text="white" style={{width: '50%'}}>
-                    <Card.Header> <h2> Welcome to Timely, Admin. {this.props.first_name} </h2></Card.Header>
-                        <Card.Body>
-                            <Card.Text>
-                                             <h3> Here is your team: </h3>
-                                <h6> Please select someone to make changes </h6>
-                            </Card.Text>
+                <motion.div
+                    initial={{y: -100}}
+                    animate={{y: -0}}
+                    transition={{duration: 1}}
+                >
+
+                    <NavBar logged_in={this.props.logged_in}/>
+                </motion.div>
+
+                <Card className="adminPanelCard">
+                    <Card.Body>
+                        {this.state.loading === true ? (
+                            <div className={'loadingSpinnerContainer'}>
+                                <Spinner className={'loadingSpinner'} animation="border" variant="primary"/>
+                            </div>
+
+                        ) : (
+
+                            <div className={'adminContentContainer'}>
+                                <h2> Welcome to Timely, Admin. {this.props.first_name} </h2>
+                                <Card.Text>
+                                    <h3> Here is your team: </h3>
+                                    <h6> Please select someone to make changes </h6>
+                                </Card.Text>
 
 
+                                {/*<Container className={'cardContainer'}>*/}
+                                {/*    <Row>*/}
+                                {/*        <Col className={'column1'} sm={8}>*/}
+                                {/*            <Card>*/}
+                                {/*                <Card.Body>This is some text within a card body.</Card.Body>*/}
+                                {/*            </Card>*/}
 
 
-      {this.state.employeeData.map(employeeInfo => {
-                                            const {first_name, last_name, is_super_user, employee_id} = employeeInfo;
+                                {/*        </Col>*/}
+                                {/*        <Col className={'column2'} sm={4}>*/}
+                                {/*    <Card>*/}
+                                {/*                <Card.Body>This is some text within a card body.</Card.Body>*/}
+                                {/*            </Card>*/}
 
-                                            return (
-
-         <EmployeeProfileCard employee_id={employee_id} first_name={first_name} last_name={last_name} is_super_user={is_super_user}/>
-
-                                            )
-                                        })}
-
-
+                                {/*        </Col>*/}
+                                {/*    </Row>*/}
+                                {/*</Container>*/}
 
 
-                        </Card.Body>
-                    </Card>
+                                {this.state.employeeData.map(employeeInfo => {
+                                    const {first_name, last_name, is_super_user, employee_id} = employeeInfo;
+
+                                    return (
+
+                                        <EmployeeProfileCard employee_id={employee_id} first_name={first_name}
+                                                             last_name={last_name} is_super_user={is_super_user}/>
+
+                                    )
+                                })}
+                            </div>
+
+                        )}
+
+
+                    </Card.Body>
+                </Card>
             </div>
-        );
+        )
+            ;
     }
 }
 

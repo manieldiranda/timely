@@ -37,3 +37,10 @@ def jwt_response_payload_handler(token, user=None, request=None):
         'user': user,
         'profile_id': profile.profile_id
     }
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer

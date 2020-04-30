@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import '../css/LogInPage.css';
-import NavBar from "./NavBar";
-import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
+
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
-import Alert from 'react-bootstrap/Alert'
 import {withRouter} from "react-router-dom";
-
+import {InputText} from 'primereact/inputtext';
+import {motion, AnimatePresence} from "framer-motion"
 
 
 const BASE_API_URL = process.env.REACT_APP_BASE_URL;
@@ -22,26 +20,32 @@ class LogInPage extends Component {
             value: '',
             username: '',
             password: '',
+            error: false,
+            loading: false,
             api: 'http://localhost:8000/'
         }
 
     }
+
 
     componentDidMount() {
         localStorage.removeItem('token');
     }
 
     handle_login = (e, data) => {
+
         e.preventDefault();
         axios.post(`${BASE_API_URL}auth-get-token/`, {
-            username: data.username,
-            password: data.password
+            username: this.state.username,
+            password: this.state.password
         })
             .then((response) => {
+
                 let logInResponse = response.data
                 localStorage.setItem('token', logInResponse.token)
                 console.log(logInResponse);
                 this.setState({
+                    loading:true,
                     logged_in: true,
                 })
                 this.props.history.push("/home");
@@ -56,17 +60,6 @@ class LogInPage extends Component {
     };
 
 
-    handle_change = e => {
-        const name = e.target.name;
-        const value = e.target.value;
-        this.setState(prevstate => {
-            const newState = {...prevstate};
-            newState[name] = value;
-            return newState;
-        });
-    };
-
-
     submitForm(e) {
         e.preventDefault();
         console.log(`Email: ${this.state.email}`)
@@ -75,48 +68,69 @@ class LogInPage extends Component {
 
     render() {
         return (
-            <div>
-                <NavBar logged_in={false}/>
+            <div className={'backgroundContainer'}>
 
-                <Alert variant={'info'} className={'demoModeMessage'}>
-                    <b>Demo Mode</b>
-                    <p>To use as admin: username/password is "admin" <br/> To use as employee: username/password is "employee" </p>
+                <motion.div
+                    className="container"
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{scale: 3}}
+                >
+                    <div className="container">
+                        <div className="row">
 
-                </Alert>
-                <Card className="logInFormCard" bg="dark" text="white" style={{width: '50%'}}>
+                            {this.state.loading === true ? (
+                                <div className="col-lg-10 col-xl-9 mx-auto">
+                                    <div className="card card-signin flex-row my-5">
+                                    </div>
+                                </div>
 
-                    <Card.Header>
+                            ) : (
 
-                        <h1> Welcome to Timely! </h1>
-                    </Card.Header>
 
-                    <Card.Body>
-                        <Card.Text>
-                            Please log in:
-                        </Card.Text>
-                        <div className={"logInForm"}>
-                            <Form onSubmit={e => this.handle_login(e, this.state)}>
-                                <Form.Group>
-                                    <Form.Label>Username</Form.Label>
-                                    <Form.Control placeholder="Enter username" name="username"
-                                                  value={this.state.username}
-                                                  onChange={this.handle_change}
-                                    />
-                                </Form.Group>
+                                <div className="col-lg-10 col-xl-9 mx-auto">
+                                    <div className="card card-signin flex-row my-5">
+                                        <div className="card-img-left d-none d-md-flex">
+                                        </div>
+                                        <div className="card-body">
+                                            <div className={'formContainer'}>
+                                                <h1 className="card-title">Timely</h1>
+                                                <form className="form-signin">
+                                                    <div className="form-label-group">
+<span className="p-float-label">
+    <InputText className={'logInFormInput'} id="in" value={this.state.username}
+               onChange={(e) => this.setState({username: e.target.value})}/>
+    <label htmlFor="in">Username</label>
+</span>
 
-                                <Form.Group controlId="formBasicPassword">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control type="password" placeholder="Password" name="password"
-                                                  value={this.state.password} onChange={this.handle_change}
-                                    />
-                                </Form.Group>
-                                <Button variant="primary" type="submit">
-                                    Submit
-                                </Button>
-                            </Form>
+                                                    </div>
+
+                                                    <div className="form-label-group">
+<span className="p-float-label">
+    <InputText className={'logInFormInput'} type={"password"} id="in" value={this.state.password}
+               onChange={(e) => this.setState({password: e.target.value})}/>
+    <label htmlFor="in">Password</label>
+</span>
+                                                    </div>
+                                                    {this.state.error === true ? (
+                                                        <p> Invalid Username/Password</p>) : (null)}
+                                                    <Button onClick={this.handle_login}
+                                                            className="btn btn-lg btn-google btn-block text-uppercase"
+                                                            type="submit"><i className="fab fa-google mr-2"></i> Sign In
+                                                    </Button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            )}
+
+
                         </div>
-                    </Card.Body>
-                </Card>
+                    </div>
+                </motion.div>
             </div>
         );
     }

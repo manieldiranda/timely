@@ -1,41 +1,145 @@
-body{
-    background-color: #282c34;
+/*.introImageContainer {*/
+/*    width: 100% !important;*/
+/*    background-color: royalblue;*/
+/*    text-align: center;*/
+
+
+/*    !*background-color: #f4f5f7 !important;*!*/
+/*}*/
+
+/*.container {*/
+/*    max-width: 75%;*/
+/*    height: 100%;*/
+/*    margin: auto !important;*/
+/*    margin-top: 5% !important;*/
+/*    border-radius: 5px;*/
+/*    background-color: #fff;*/
+/*      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
+
+
+/*}*/
+
+/*.introImage {*/
+/*    height: 45em !important;*/
+/*    margin: auto;*/
+
+/*    width:40em;*/
+/*    border-radius: 5px !important;*/
+/*}*/
+
+/*body {*/
+/*    background-color: #e8e9eb !important;*/
+/*}*/
+
+/*.col {*/
+/*    padding:0px;*/
+/*}*/
+
+/*.logInFormContainer{*/
+/*    width:55%;*/
+/*    padding-top:22%;*/
+/*    margin: auto;*/
+/*}*/
+
+/*.logInFormContainer h1{*/
+/*text-align: center;*/
+/*}*/
+
+/*.logInButton{*/
+/*    margin: auto;*/
+/*    width:50%;*/
+/*}*/
+
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: .75rem;
 }
 
-.logInFormCard{
-    width: 50%;
+body {
+    background: #007bff;
+    background: linear-gradient(to right, #0062E6, #33AEFF);
+}
+
+.card-signin {
+    top:3%;
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 80%;
+    background-color: #f4f5f7;
+}
+
+.card-signin .card-title {
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+.card-signin .card-img-left {
+    width: 47%;
+    /* Link to your background image using in the property below! */
+    background: center url('../images/undraw_creative_team_r90h (1).svg');
+    background-size: 85% 85%;
+    background-repeat: no-repeat;
+    background-color: #fff3cd;
+}
+
+.card-signin .card-body {
+    padding: 2rem;
+}
+
+.form-signin {
+    width: 100%;
+}
+
+.container {
+    height: 100%;
+    max-width: 100%;
+}
+
+.row {
+    height: 100%;
+}
+
+.formContainer {
     margin: auto;
-    margin-top:50px;
-    margin-bottom:50px;
+    padding-top: 5.5rem;
+    max-width: 25em;
+}
+
+.form-label-group {
+    padding-bottom: 1.5em;
 
 }
 
-.logInForm{
-    width:75%;
-    margin:auto;
+.logInFormInput {
+    width:100%;
+        border: 1px solid #ced4da;
+    border-radius: .25rem;
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.demoModeMessage {
-    width: 85%;
-max-width: 500px;
-    margin: auto;
-    margin-top:20px;
-}
-
-@media (max-width: 1000px){
-    .logInFormCard{
-    width: 90% !important;
-    margin: auto;
-    margin-top:50px;
+.backgroundContainer {
+    height:100vh;
+    width:100vw;
+        background: linear-gradient(to right, #0062E6, #33AEFF);
 
 }
-}
-@media (min-width: 1001px) and (max-width: 1300px ){
-    .logInFormCard{
-    width: 70% !important;
-    margin: auto;
-    margin-top:50px;
+
+
+@media (max-width: 750px){
 
 }
-}
-
