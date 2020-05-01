@@ -140,6 +140,35 @@ body {
 }
 
 
-@media (max-width: 750px){
+@media (min-width: 750px){
+.logInImageMobile{
+display: none;
+}
 
+}
+
+@media (max-width: 750px){
+.formContainer {
+    padding-top: 1rem;
+}
+}
+
+.logInImageMobile{
+height:70%;
+    width: 70%;
+    margin: auto;
+    padding-bottom:2em;
+}
+
+.logInImageMobileContainer{
+text-align: center;
+}
+
+.titleContainer {
+    display: inline-flex;
+}
+
+.card-title{
+font-weight: 700;
+    font-size: 10em;
 }

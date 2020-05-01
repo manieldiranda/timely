@@ -100,20 +100,27 @@ class EmployeeProfile extends Component {
             {label: 'Overview', value: 'overview'}
         ];
 
-        const data = {
-            labels: ['A', 'B', 'C'],
+                const data = {
+            labels: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
             datasets: [
                 {
-                    data: [300, 50, 100],
+                    label:'4/4/2020',
+                    data: [25, 40, 30, 40, 15, 20, 12],
                     backgroundColor: [
                         "#FF6384",
                         "#36A2EB",
-                        "#FFCE56"
+                        "#FFCE56",
+                        "#8285f8",
+                        "#3072f2",
+                        "#f26e44",
                     ],
                     hoverBackgroundColor: [
                         "#FF6384",
                         "#36A2EB",
-                        "#FFCE56"
+                        "#FFCE56",
+                        "#8285f8",
+                        "#3072f2",
+                                                "#f26e44",
                     ]
                 }]
         };
@@ -121,8 +128,8 @@ class EmployeeProfile extends Component {
         return (
             <div className={'employeeProfileContainer'}>
                 <NavBar logged_in={this.state.logged_in}/>
-                <Card className={'employeeProfileCardContainer'}>
-                    <Card.Body >
+                <div className={'employeeProfileCardContainer'}>
+                    <div >
                         <div className={'employeeProfileCard'}>
                         <h3> Employee Details for: <h1>
                             <b>{this.state.profile.first_name} {this.state.profile.last_name} </b></h1></h3>
@@ -237,19 +244,19 @@ class EmployeeProfile extends Component {
                                     <Row>
                                         <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
                                             <Panel header="Days Scheduled">
-                                                <Chart type="pie" data={data}/>
+                                                <Chart type="bar" data={data} options={{legend:{display: false}}}/>
 
                                             </Panel>
                                         </Col>
                                         <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
                                             <Panel header="Avg hours scheduled">
-                                                <Chart type="line" data={data}/>
+                                                <Chart type="line" data={data} options={{legend:{display: false}}}/>
 
                                             </Panel>
                                         </Col>
                                         <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
                                             <Panel header="Num hours per week">
-                                                <Chart type="bar" data={data}/>
+                                                <Chart type="pie" data={data} options={{legend:{display: false}}}/>
 
                                             </Panel>
                                         </Col>
@@ -267,9 +274,9 @@ class EmployeeProfile extends Component {
                                     Back</Button>
                         </div>
                         </div>
-                    </Card.Body>
+                    </div>
 
-                </Card>
+                </div>
             </div>
         );
     }

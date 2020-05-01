@@ -19,6 +19,8 @@ import {motion} from "framer-motion";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
+import {Panel} from "primereact/panel";
+import {Chart} from "primereact/chart";
 
 const BASE_API_URL = process.env.REACT_APP_BASE_URL;
 
@@ -61,6 +63,29 @@ class AdminHomePage extends Component {
 
 
     render() {
+
+                const data = {
+            labels: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
+            datasets: [
+                {
+                    label:'4/4/2020',
+                    data: [25, 40, 30, 40, 15, 20, 12],
+                    backgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56",
+                        "#8285f8",
+                        "#3072f2",
+                    ],
+                    hoverBackgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56",
+                        "#8285f8",
+                        "#3072f2",
+                    ]
+                }]
+        };
         return (
 
             <div>
@@ -73,8 +98,7 @@ class AdminHomePage extends Component {
                     <NavBar logged_in={this.props.logged_in}/>
                 </motion.div>
 
-                <Card className="adminPanelCard">
-                    <Card.Body>
+                <div className="adminPanelCard">
                         {this.state.loading === true ? (
                             <div className={'loadingSpinnerContainer'}>
                                 <Spinner className={'loadingSpinner'} animation="border" variant="primary"/>
@@ -84,48 +108,52 @@ class AdminHomePage extends Component {
 
                             <div className={'adminContentContainer'}>
                                 <h2> Welcome to Timely, Admin. {this.props.first_name} </h2>
-                                <Card.Text>
+
+<br/>
+                                <Container>
+                                    <Row>
+                                        <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
+                                            <Panel header="Days Scheduled">
+                                                <Chart type="bar" data={data} options={{legend:{display: false}}}/>
+
+                                            </Panel>
+                                        </Col>
+                                        <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
+                                            <Panel header="Avg hours scheduled">
+                                                <Chart type="line" data={data} options={{legend:{display: false}}}/>
+
+                                            </Panel>
+                                        </Col>
+                                        <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
+                                            <Panel header="Num hours per week">
+                                                <Chart type="pie" data={data} options={{legend:{display: false}}}/>
+
+                                            </Panel>
+                                        </Col>
+                                    </Row>
+
+                                </Container>
                                     <h3> Here is your team: </h3>
                                     <h6> Please select someone to make changes </h6>
-                                </Card.Text>
 
+                                <div>
 
-                                {/*<Container className={'cardContainer'}>*/}
-                                {/*    <Row>*/}
-                                {/*        <Col className={'column1'} sm={8}>*/}
-                                {/*            <Card>*/}
-                                {/*                <Card.Body>This is some text within a card body.</Card.Body>*/}
-                                {/*            </Card>*/}
+                                    {this.state.employeeData.map(employeeInfo => {
+                                        const {first_name, last_name, is_super_user, employee_id} = employeeInfo;
 
+                                        return (
 
-                                {/*        </Col>*/}
-                                {/*        <Col className={'column2'} sm={4}>*/}
-                                {/*    <Card>*/}
-                                {/*                <Card.Body>This is some text within a card body.</Card.Body>*/}
-                                {/*            </Card>*/}
+                                            <EmployeeProfileCard employee_id={employee_id} first_name={first_name}
+                                                                 last_name={last_name} is_super_user={is_super_user}/>
 
-                                {/*        </Col>*/}
-                                {/*    </Row>*/}
-                                {/*</Container>*/}
-
-
-                                {this.state.employeeData.map(employeeInfo => {
-                                    const {first_name, last_name, is_super_user, employee_id} = employeeInfo;
-
-                                    return (
-
-                                        <EmployeeProfileCard employee_id={employee_id} first_name={first_name}
-                                                             last_name={last_name} is_super_user={is_super_user}/>
-
-                                    )
-                                })}
+                                        )
+                                    })}
+                                </div>
                             </div>
-
                         )}
 
 
-                    </Card.Body>
-                </Card>
+                </div>
             </div>
         )
             ;

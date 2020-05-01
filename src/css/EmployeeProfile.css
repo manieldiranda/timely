@@ -5,6 +5,7 @@
 }
 
 .employeeProfileCard{
+    padding-top:2em;
     max-width: 1200px;
     margin: auto;
 }
@@ -65,5 +66,9 @@
         padding-top:1em;
         padding-bottom:1em;
     }
+
+    .employeeProfileCard{
+    width: 90%;
+}
 }
 

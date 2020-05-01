@@ -6,6 +6,8 @@ import axios from "axios";
 import {withRouter} from "react-router-dom";
 import {InputText} from 'primereact/inputtext';
 import {motion, AnimatePresence} from "framer-motion"
+import logInImage from '../images/undraw_creative_team_r90h (1).svg'
+import Alert from 'react-bootstrap/Alert';
 
 
 const BASE_API_URL = process.env.REACT_APP_BASE_URL;
@@ -21,6 +23,7 @@ class LogInPage extends Component {
             username: '',
             password: '',
             error: false,
+            showingErrorMessage: true,
             loading: false,
             api: 'http://localhost:8000/'
         }
@@ -45,7 +48,7 @@ class LogInPage extends Component {
                 localStorage.setItem('token', logInResponse.token)
                 console.log(logInResponse);
                 this.setState({
-                    loading:true,
+                    loading: true,
                     logged_in: true,
                 })
                 this.props.history.push("/home");
@@ -57,6 +60,12 @@ class LogInPage extends Component {
                     {error: true}
                 )
             });
+    };
+
+    toggleMessageShow = () => {
+        this.setState({
+            showingInfoMessage: false
+        })
     };
 
 
@@ -76,7 +85,11 @@ class LogInPage extends Component {
                     animate={{opacity: 1}}
                     exit={{scale: 3}}
                 >
+
+
                     <div className="container">
+
+
                         <div className="row">
 
                             {this.state.loading === true ? (
@@ -89,16 +102,31 @@ class LogInPage extends Component {
 
 
                                 <div className="col-lg-10 col-xl-9 mx-auto">
+
                                     <div className="card card-signin flex-row my-5">
+
                                         <div className="card-img-left d-none d-md-flex">
                                         </div>
                                         <div className="card-body">
+                                            <Alert variant="primary"
+                                                   show={this.state.showingInfoMessage}
+                                                   onClose={this.toggleMessageShow}
+                                                   dismissible>
+                                                <b> Demo Mode:</b>
+                                                <p> Admin Acc: admin/admin </p>
+                                                <p> User Acc: employee/coolpass1@ </p>
+
+
+                                            </Alert>
                                             <div className={'formContainer'}>
-                                                <h1 className="card-title">Timely</h1>
+                                                <div className={'logInImageMobileContainer'}>
+                                                    <img className={'logInImageMobile'} src={logInImage}/>
+                                                </div>
+                                                <h1 className="card-title"> Welcome to Timely</h1>
                                                 <form className="form-signin">
                                                     <div className="form-label-group">
 <span className="p-float-label">
-    <InputText className={'logInFormInput'} id="in" value={this.state.username}
+    <InputText className={'logInFormInput'} value={this.state.username}
                onChange={(e) => this.setState({username: e.target.value})}/>
     <label htmlFor="in">Username</label>
 </span>

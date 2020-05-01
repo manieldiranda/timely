@@ -219,58 +219,7 @@ class EmployeeHomePage extends Component {
                             </div>
                             <div className={"previousShifts"}>
                                 <h1> Previous Shifts: </h1>
-                                {/*<Accordion className={"timeEntryAccordion"}>*/}
 
-                                {/*    {this.state.profile.time_entries.map(timeEntryInfo => {*/}
-                                {/*        const {date, clock_in, clock_out, late, time_entry_id} = timeEntryInfo;*/}
-
-                                {/*        return (*/}
-
-                                {/*            <Card>*/}
-                                {/*                <Accordion.Toggle date={date} clock_in={clock_in}*/}
-                                {/*                                  clock_out={clock_out} late={late}*/}
-                                {/*                                  time_entry_id={time_entry_id} as={Card.Header}*/}
-                                {/*                                  eventKey={time_entry_id}>*/}
-                                {/*                    <Moment*/}
-                                {/*                        format="MM/DD/YYYY">{date}</Moment>*/}
-                                {/*                </Accordion.Toggle>*/}
-                                {/*                <Accordion.Collapse eventKey={time_entry_id}>*/}
-                                {/*                        <div className={"timeEntryDetailContainer"}>*/}
-                                {/*                            <div className={"clockIn timeEntryDetail"}>*/}
-                                {/*                                <h6><b> Clock In:</b></h6>*/}
-                                {/*                                <Moment*/}
-                                {/*                                    format="hh:mm A">{clock_in}</Moment>*/}
-                                {/*                            </div>*/}
-                                {/*                            <div className={"clockOut timeEntryDetail"}>*/}
-                                {/*                                <h6><b> Clock Out:</b></h6>*/}
-                                {/*                                { clock_out == null? (<p> Pending </p> ) : ( <Moment*/}
-                                {/*                                    format="hh:mm A">{clock_out}</Moment>) }*/}
-
-
-                                {/*                            </div>*/}
-                                {/*                            <div className={"late timeEntryDetail"}>*/}
-
-                                {/*                                {`${this.props.late}` == true ? (*/}
-                                {/*                                    <div className={'alertContainer'}>*/}
-                                {/*                                        <Alert className={"lateAlert"}*/}
-                                {/*                                               variant={'danger'}>*/}
-                                {/*                                            Late*/}
-                                {/*                                        </Alert>*/}
-                                {/*                                    </div>) : (*/}
-                                {/*                                    <div className={'alertContainer'}><Alert*/}
-                                {/*                                        className={"lateAlert"} variant={'info'}>*/}
-                                {/*                                        On Time*/}
-                                {/*                                    </Alert>*/}
-                                {/*                                    </div>)}*/}
-                                {/*                            </div>*/}
-
-                                {/*                        </div>*/}
-                                {/*                </Accordion.Collapse>*/}
-                                {/*            </Card>*/}
-
-                                {/*        )*/}
-                                {/*    })}*/}
-                                {/*</Accordion>*/}
                                 <Accordion className={"timeEntryAccordion"}>
 
                                     {this.state.profile.time_entries.map(timeEntryInfo => {
