@@ -109,30 +109,30 @@ class AdminHomePage extends Component {
                             <div className={'adminContentContainer'}>
                                 <h2> Welcome to Timely, Admin. {this.props.first_name} </h2>
 
-<br/>
-                                <Container>
-                                    <Row>
-                                        <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
-                                            <Panel header="Days Scheduled">
-                                                <Chart type="bar" data={data} options={{legend:{display: false}}}/>
+{/*<br/>*/}
+{/*                                <Container>*/}
+{/*                                    <Row>*/}
+{/*                                        <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>*/}
+{/*                                            <Panel header="Days Scheduled">*/}
+{/*                                                <Chart type="bar" data={data} options={{legend:{display: false}}}/>*/}
 
-                                            </Panel>
-                                        </Col>
-                                        <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
-                                            <Panel header="Avg hours scheduled">
-                                                <Chart type="line" data={data} options={{legend:{display: false}}}/>
+{/*                                            </Panel>*/}
+{/*                                        </Col>*/}
+{/*                                        <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>*/}
+{/*                                            <Panel header="Avg hours scheduled">*/}
+{/*                                                <Chart type="line" data={data} options={{legend:{display: false}}}/>*/}
 
-                                            </Panel>
-                                        </Col>
-                                        <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
-                                            <Panel header="Num hours per week">
-                                                <Chart type="pie" data={data} options={{legend:{display: false}}}/>
+{/*                                            </Panel>*/}
+{/*                                        </Col>*/}
+{/*                                        <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>*/}
+{/*                                            <Panel header="Num hours per week">*/}
+{/*                                                <Chart type="pie" data={data} options={{legend:{display: false}}}/>*/}
 
-                                            </Panel>
-                                        </Col>
-                                    </Row>
+{/*                                            </Panel>*/}
+{/*                                        </Col>*/}
+{/*                                    </Row>*/}
 
-                                </Container>
+{/*                                </Container>*/}
                                     <h3> Here is your team: </h3>
                                     <h6> Please select someone to make changes </h6>
 
