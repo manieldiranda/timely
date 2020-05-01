@@ -13,6 +13,8 @@ import Collapse from 'react-bootstrap/Collapse'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 const BASE_API_URL = process.env.REACT_APP_BASE_URL;
 
@@ -175,82 +177,137 @@ class EmployeeHomePage extends Component {
             <div>
                 <NavBar logged_in={this.state.logged_in}/>
                 {this.state.logged_in === true ? (
-                        <Card className="logInFormCard" bg="dark" text="white" style={{width: '50%'}}>
-                            <Card.Header><h3> Welcome to Timely, {this.state.first_name}! </h3></Card.Header>
-                            <Card.Body>
-                                <Card.Text>
-                                    Please select what you would like to do:
-                                </Card.Text>
-                                <div className={"timeEntryButtons"}>
-                                    <div className={"timeEntryButtonsContainer"}>
+                        <div className={'employeeContentContainer'}>
+                            <h1> Welcome to Timely, {this.state.first_name}! </h1>
+                            Please select what you would like to do:
+                            <div className={"timeEntryButtons"}>
+                                <div className={"timeEntryButtonsContainer"}>
 
 
-
-                                    </div>
-                                    <Container>
-  <Row>
-    <Col className={'buttonColumn'} sm={12}md={6}>  {this.state.profile.clocked_in == true ? (
-                                            <Button variant="primary"  className={"timeEntryButton"} size="lg" disabled>
+                                </div>
+                                <Container>
+                                    <Row>
+                                        <Col className={'leftButtonColumn'} sm={12}
+                                             md={6}>  {this.state.profile.clocked_in == true ? (
+                                            <Button variant="primary" className={"timeEntryButton"} size="lg" disabled>
                                                 Clocked In
                                             </Button>) : (
                                             <Button onClick={this.clockIn} className={"timeEntryButton"} variant="primary"
                                                     size="lg">
                                                 Clock In
                                             </Button>)}
-    </Col>
-    <Col  className={'buttonColumn'}  sm={12}md={6}>
+                                        </Col>
+                                        <Col className={'rightButtonColumn'} sm={12} md={6}>
 
-{this.state.profile.clocked_in == false ? (
-                                            <Button variant="secondary"  className={"timeEntryButton"} size="lg" disabled>
-                                                Clocked Out
-                                            </Button>) : (
-                                            <Button onClick={this.clockOut} className={"timeEntryButton"} variant="secondary"
-                                                    size="lg">
-                                                Clock Out
-                                            </Button>)}
+                                            {this.state.profile.clocked_in == false ? (
+                                                <Button variant="secondary" className={"timeEntryButton"} size="lg"
+                                                        disabled>
+                                                    Clocked Out
+                                                </Button>) : (
+                                                <Button onClick={this.clockOut} className={"timeEntryButton"}
+                                                        variant="secondary"
+                                                        size="lg">
+                                                    Clock Out
+                                                </Button>)}
 
-</Col>
-  </Row>
+                                        </Col>
+                                    </Row>
 
-</Container>
+                                </Container>
 
 
-                                </div>
-                                <div className={"previousShifts"}>
-                                    <h1> Previous Shifts: </h1>
-                                    <Accordion className={"timeEntryAccordion"}>
+                            </div>
+                            <div className={"previousShifts"}>
+                                <h1> Previous Shifts: </h1>
+                                {/*<Accordion className={"timeEntryAccordion"}>*/}
 
-                                        {this.state.profile.time_entries.map(timeEntryInfo => {
-                                            const {date, clock_in, clock_out, late, time_entry_id} = timeEntryInfo;
+                                {/*    {this.state.profile.time_entries.map(timeEntryInfo => {*/}
+                                {/*        const {date, clock_in, clock_out, late, time_entry_id} = timeEntryInfo;*/}
 
-                                            return (
+                                {/*        return (*/}
 
-                                                <Card>
-                                                    <Accordion.Toggle date={date} clock_in={clock_in}
-                                                                      clock_out={clock_out} late={late}
-                                                                      time_entry_id={time_entry_id} as={Card.Header}
-                                                                      eventKey={time_entry_id}>
-                                                        <Moment
-                                                            format="MM/DD/YYYY">{date}</Moment>
-                                                    </Accordion.Toggle>
-                                                    <Accordion.Collapse eventKey={time_entry_id}>
-                                                        <Card.Body>
-                                                            <div className={"timeEntryDetailContainer"}>
-                                                                <div className={"clockIn timeEntryDetail"}>
+                                {/*            <Card>*/}
+                                {/*                <Accordion.Toggle date={date} clock_in={clock_in}*/}
+                                {/*                                  clock_out={clock_out} late={late}*/}
+                                {/*                                  time_entry_id={time_entry_id} as={Card.Header}*/}
+                                {/*                                  eventKey={time_entry_id}>*/}
+                                {/*                    <Moment*/}
+                                {/*                        format="MM/DD/YYYY">{date}</Moment>*/}
+                                {/*                </Accordion.Toggle>*/}
+                                {/*                <Accordion.Collapse eventKey={time_entry_id}>*/}
+                                {/*                        <div className={"timeEntryDetailContainer"}>*/}
+                                {/*                            <div className={"clockIn timeEntryDetail"}>*/}
+                                {/*                                <h6><b> Clock In:</b></h6>*/}
+                                {/*                                <Moment*/}
+                                {/*                                    format="hh:mm A">{clock_in}</Moment>*/}
+                                {/*                            </div>*/}
+                                {/*                            <div className={"clockOut timeEntryDetail"}>*/}
+                                {/*                                <h6><b> Clock Out:</b></h6>*/}
+                                {/*                                { clock_out == null? (<p> Pending </p> ) : ( <Moment*/}
+                                {/*                                    format="hh:mm A">{clock_out}</Moment>) }*/}
+
+
+                                {/*                            </div>*/}
+                                {/*                            <div className={"late timeEntryDetail"}>*/}
+
+                                {/*                                {`${this.props.late}` == true ? (*/}
+                                {/*                                    <div className={'alertContainer'}>*/}
+                                {/*                                        <Alert className={"lateAlert"}*/}
+                                {/*                                               variant={'danger'}>*/}
+                                {/*                                            Late*/}
+                                {/*                                        </Alert>*/}
+                                {/*                                    </div>) : (*/}
+                                {/*                                    <div className={'alertContainer'}><Alert*/}
+                                {/*                                        className={"lateAlert"} variant={'info'}>*/}
+                                {/*                                        On Time*/}
+                                {/*                                    </Alert>*/}
+                                {/*                                    </div>)}*/}
+                                {/*                            </div>*/}
+
+                                {/*                        </div>*/}
+                                {/*                </Accordion.Collapse>*/}
+                                {/*            </Card>*/}
+
+                                {/*        )*/}
+                                {/*    })}*/}
+                                {/*</Accordion>*/}
+                                <Accordion className={"timeEntryAccordion"}>
+
+                                    {this.state.profile.time_entries.map(timeEntryInfo => {
+                                        const {date, clock_in, clock_out, late, time_entry_id} = timeEntryInfo;
+
+                                        return (
+
+                                            <Card>
+                                                <Accordion.Toggle date={date} clock_in={clock_in}
+                                                                  clock_out={clock_out} late={late}
+                                                                  time_entry_id={time_entry_id} as={Card.Header}
+                                                                  eventKey={time_entry_id}>
+                                                    <Moment
+                                                        format="MM/DD/YYYY">{date}</Moment>
+                                                    {/*only displays on mobile*/}
+                                                </Accordion.Toggle>
+                                                <Accordion.Collapse eventKey={time_entry_id}>
+                                                    <Card.Body>
+                                                        <Container>
+                                                            <Row className={'timeEntryDetailContainer'}>
+                                                                <Col className={'timeEntryDetailColumn'} xs={12} md={3}>
+
                                                                     <h6><b> Clock In:</b></h6>
                                                                     <Moment
                                                                         format="hh:mm A">{clock_in}</Moment>
-                                                                </div>
-                                                                <div className={"clockOut timeEntryDetail"}>
+
+                                                                </Col>
+                                                                <Col className={'timeEntryDetailColumn'} xs={12} md={3}>
                                                                     <h6><b> Clock Out:</b></h6>
-                                                                    { clock_out == null? (<p> Pending </p> ) : ( <Moment
-                                                                        format="hh:mm A">{clock_out}</Moment>) }
+                                                                    {clock_out == null ? (<p> Pending </p>) : (<Moment
+                                                                        format="hh:mm A">{clock_out}</Moment>)}
 
 
-                                                                </div>
-                                                                <div className={"late timeEntryDetail"}>
+                                                                </Col>
+                                                                <Col className={'timeEntryDetailColumn'} xs={12} md={6}>
 
-                                                                    {`${this.props.late}` == true ? (
+                                                                    {`${this.props.late}` === true ? (
                                                                         <div className={'alertContainer'}>
                                                                             <Alert className={"lateAlert"}
                                                                                    variant={'danger'}>
@@ -261,36 +318,41 @@ class EmployeeHomePage extends Component {
                                                                             className={"lateAlert"} variant={'info'}>
                                                                             On Time
                                                                         </Alert>
-                                                                        </div>)}
-                                                                </div>
 
-                                                            </div>
-                                                        </Card.Body>
-                                                    </Accordion.Collapse>
-                                                </Card>
+                                                                        </div>
+                                                                    )}
 
-                                            )
-                                        })}
-                                    </Accordion>
-                                </div>
-                            </Card.Body>
-                        </Card>
+
+                                                                </Col>
+                                                            </Row>
+                                                        </Container>
+                                                    </Card.Body>
+                                                </Accordion.Collapse>
+                                            </Card>
+
+
+                                        )
+                                    })}
+                                </Accordion>
+
+
+                            </div>
+                        </div>
                     )
 
-                    : (<Card className="logInFormCard" bg="dark" text="white" style={{width: '50%'}}>
-                        <Card.Header>Log-In Required</Card.Header>
-                        <Card.Body>
-                            <Card.Text>
-                                You need to be logged-in to access this page.
-                            </Card.Text>
+                    : (
+                        <div>
+                            <h1>Log-In Required</h1><p>
+                            You need to be logged-in to access this page.
+                        </p>
                             <LinkContainer to="/">
                                 <Button variant="primary" type="submit">
                                     Log In
                                 </Button>
                             </LinkContainer>
 
-                        </Card.Body>
-                    </Card>)
+                        </div>
+                    )
 
                 }
             </div>

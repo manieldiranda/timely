@@ -1,0 +1,31 @@
+.employeeContentContainer {
+    max-width:1000px;
+    padding-top:2em;
+    margin: auto;
+}
+
+.leftButtonColumn {
+    text-align: right;
+}
+
+.timeEntryButtons {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+
+@media (max-width: 800px) {
+
+    .leftButtonColumn {
+    text-align: center;
+}
+
+    .rightButtonColumn {
+    text-align: center;
+        padding-top:2em ;
+}
+
+    .timeEntryButton{
+        width:70%;
+    }
+}

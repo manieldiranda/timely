@@ -39,7 +39,7 @@ class Router extends Component {
                     />
                     <Route
                         exact
-                        path={"/home/"}
+                        path={"/home"}
                         render={props => (
                             <HomePageContainer
                                 logged_in={this.state.logged_in}

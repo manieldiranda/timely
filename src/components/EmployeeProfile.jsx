@@ -18,8 +18,8 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container'
 import {Panel} from 'primereact/panel';
 import {Chart} from 'primereact/chart';
-;
 
+;
 
 
 const BASE_API_URL = process.env.REACT_APP_BASE_URL;
@@ -89,7 +89,7 @@ class EmployeeProfile extends Component {
     }
 
     goBack = () => {
-        this.props.history.push("/");
+        this.props.history.push("/home");
 
     }
 
@@ -100,8 +100,8 @@ class EmployeeProfile extends Component {
             {label: 'Overview', value: 'overview'}
         ];
 
-               const data = {
-            labels: ['A','B','C'],
+        const data = {
+            labels: ['A', 'B', 'C'],
             datasets: [
                 {
                     data: [300, 50, 100],
@@ -116,13 +116,14 @@ class EmployeeProfile extends Component {
                         "#FFCE56"
                     ]
                 }]
-            };
+        };
 
         return (
-            <div>
+            <div className={'employeeProfileContainer'}>
                 <NavBar logged_in={this.state.logged_in}/>
-                <Card className="logInFormCard">
-                    <Card.Body>
+                <Card className={'employeeProfileCardContainer'}>
+                    <Card.Body >
+                        <div className={'employeeProfileCard'}>
                         <h3> Employee Details for: <h1>
                             <b>{this.state.profile.first_name} {this.state.profile.last_name} </b></h1></h3>
                         <div className={'detailChoiceButtonsContainer'}>
@@ -151,48 +152,68 @@ class EmployeeProfile extends Component {
                                                                   eventKey={time_entry_id}>
                                                     <Moment
                                                         format="MM/DD/YYYY">{date}</Moment>
+                                                    {/*only displays on mobile*/}
+                                                    <Button
+                                                                            onClick={(e) => this.deleteTimeEntry(time_entry_id)}
+                                                                            className={"deleteButton mobileDeleteButton"}
+                                                                            variant="danger"><b>x</b></Button>
                                                 </Accordion.Toggle>
                                                 <Accordion.Collapse eventKey={time_entry_id}>
                                                     <Card.Body>
-                                                        <div className={"timeEntryDetailContainer"}>
-                                                            <div className={"clockIn timeEntryDetail"}>
-                                                                <h6><b> Clock In:</b></h6>
-                                                                <Moment
-                                                                    format="hh:mm A">{clock_in}</Moment>
-                                                            </div>
-                                                            <div onClick={this.hello}
-                                                                 className={"clockOut timeEntryDetail"}>
-                                                                <h6><b> Clock Out:</b></h6>
-                                                                {clock_out == null ? (<p> Pending </p>) : (<Moment
-                                                                    format="hh:mm A">{clock_out}</Moment>)}
+                                                        <Container>
+                                                            <Row className={'timeEntryDetailContainer'}>
+                                                                <Col className={'timeEntryDetailColumn'}  xs={12} md={3}>
+
+                                                                    <h6><b> Clock In:</b></h6>
+                                                                    <Moment
+                                                                        format="hh:mm A">{clock_in}</Moment>
+
+                                                                </Col>
+                                                                <Col  className={'timeEntryDetailColumn'} xs={12} md={3}>
+                                                                    <h6><b> Clock Out:</b></h6>
+                                                                    {clock_out == null ? (<p> Pending </p>) : (<Moment
+                                                                        format="hh:mm A">{clock_out}</Moment>)}
 
 
-                                                            </div>
-                                                            <div className={"late timeEntryDetail"}>
+                                                                </Col>
+                                                                <Col className={'timeEntryDetailColumn'} xs={12} md={3}>
 
-                                                                {`${this.props.late}` === true ? (
-                                                                    <div className={'alertContainer'}>
-                                                                        <Alert className={"lateAlert"}
-                                                                               variant={'danger'}>
-                                                                            Late
+                                                                    {`${this.props.late}` === true ? (
+                                                                        <div className={'alertContainer'}>
+                                                                            <Alert className={"lateAlert"}
+                                                                                   variant={'danger'}>
+                                                                                Late
+                                                                            </Alert>
+                                                                        </div>) : (
+                                                                        <div className={'alertContainer'}><Alert
+                                                                            className={"lateAlert"} variant={'info'}>
+                                                                            On Time
                                                                         </Alert>
-                                                                    </div>) : (
-                                                                    <div className={'alertContainer'}><Alert
-                                                                        className={"lateAlert"} variant={'info'}>
-                                                                        On Time
-                                                                    </Alert>
 
+                                                                        </div>
+                                                                    )}
+
+
+                                                                </Col>
+                                                                <Col className={'timeEntryDetailColumn'} xs={12} md={3}>
+                                                                    <div className={'deleteButtonContainer desktopDeleteButtonContainer'}>
+                                                                                                   <OverlayTrigger
+                                placement={'top'}
+                                overlay={
+                                    <Tooltip>
+                                        Delete Time Entry
+                                    </Tooltip>
+                                }
+                            >
+                                                                        <Button
+                                                                            onClick={(e) => this.deleteTimeEntry(time_entry_id)}
+                                                                            className={"deleteButton desktopDeleteButton"}
+                                                                            variant="danger"><b>x</b></Button>
+                                                                                                   </OverlayTrigger>
                                                                     </div>
-                                                                )}
-
-                                                            </div>
-                                                            <div className={"deleteButtonContainer"}>
-                                                                <Button
-                                                                    onClick={(e) => this.deleteTimeEntry(time_entry_id)}
-                                                                    className={"deleteButton"}
-                                                                    variant="danger"><b>x</b></Button>
-                                                            </div>
-                                                        </div>
+                                                                </Col>
+                                                            </Row>
+                                                        </Container>
                                                     </Card.Body>
                                                 </Accordion.Collapse>
                                             </Card>
@@ -215,22 +236,22 @@ class EmployeeProfile extends Component {
                                 <Container>
                                     <Row>
                                         <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
-                                           <Panel header="Days Scheduled">
-                    <Chart type="pie" data={data} />
+                                            <Panel header="Days Scheduled">
+                                                <Chart type="pie" data={data}/>
 
-</Panel>
+                                            </Panel>
                                         </Col>
-                                        <Col  className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
-                                          <Panel header="Avg hours scheduled">
-                    <Chart type="line" data={data} />
+                                        <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
+                                            <Panel header="Avg hours scheduled">
+                                                <Chart type="line" data={data}/>
 
-</Panel>
+                                            </Panel>
                                         </Col>
-                                        <Col  className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
-                                           <Panel header="Num hours per week">
-                    <Chart type="bar" data={data} />
+                                        <Col className={'graphColumn'} xs={12} sm={12} md={12} lg={4}>
+                                            <Panel header="Num hours per week">
+                                                <Chart type="bar" data={data}/>
 
-</Panel>
+                                            </Panel>
                                         </Col>
                                     </Row>
 
@@ -241,17 +262,10 @@ class EmployeeProfile extends Component {
 
 
                         <div className={"goBackButtonContainer"}>
-                            <OverlayTrigger
-                                placement={'top'}
-                                overlay={
-                                    <Tooltip>
-                                        Delete Time Entry
-                                    </Tooltip>
-                                }
-                            >
+
                                 <Button onClick={this.goBack} className={"goBackButton"} variant="primary">Go
                                     Back</Button>
-                            </OverlayTrigger>
+                        </div>
                         </div>
                     </Card.Body>
 

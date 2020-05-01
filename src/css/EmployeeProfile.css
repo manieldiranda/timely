@@ -1,13 +1,69 @@
 .detailChoiceButtonsContainer {
-text-align: center;
+    text-align: center;
     padding-bottom: 2em;
     padding-top: 2em;
 }
 
-.graphColumn {
-    padding-bottom:2em
+.employeeProfileCard{
+    max-width: 1200px;
+    margin: auto;
 }
 
-.detailsContainer h3{
-    padding-bottom:1em;
+.employeeProfileContainer {
+    height:100%;
+}.employeeProfileCardContainer {
+    height:100%;
 }
+
+
+.graphColumn {
+    padding-bottom: 2em
+}
+
+.detailsContainer h3 {
+    padding-bottom: 1em;
+}
+
+.alertContainer {
+    text-align: center;
+}
+
+.deleteButtonContainer {
+    width: 100%;
+    text-align: center;
+}
+
+.mobileDeleteButton {
+    display: none;
+}
+
+.timeEntryAccordion {
+    padding-bottom: 2em;
+}
+
+@media (max-width: 750px) {
+    .timeEntryDetailContainer {
+        text-align: center;
+    }
+
+    .alertContainer {
+        width: 50%;
+        margin: auto;
+    }
+
+    .mobileDeleteButton {
+        float: right;
+        display: inline;
+    }
+
+    .desktopDeleteButtonContainer{
+        display: none;
+        padding:0px;
+    }
+
+    .timeEntryDetailColumn {
+        padding-top:1em;
+        padding-bottom:1em;
+    }
+}
+
