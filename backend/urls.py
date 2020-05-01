@@ -38,6 +38,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('auth-get-token/', obtain_jwt_token),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
-
+    re_path('.*', TemplateView.as_view(template_name='index.html')),
+    re_path(r'/', TemplateView.as_view(template_name='index.html')),
+    re_path(r'', TemplateView.as_view(template_name='index.html')),
 ]
