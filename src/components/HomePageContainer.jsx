@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import '../css/EmployeeHomePage.css';
 import axios from "axios";
 import EmployeeHomePage from "./EmployeeHomePage";
@@ -20,7 +19,6 @@ class HomePageContainer extends Component {
             }
         }
 
-        var moment = require('moment');
     }
 
     componentDidMount() {
@@ -80,7 +78,7 @@ class HomePageContainer extends Component {
         return (
             <div>
 
-                {this.state.is_super_user == true ? (<AdminHomePage logged_in={this.state.logged_in} first_name={this.state.first_name}
+                {this.state.is_super_user === true ? (<AdminHomePage logged_in={this.state.logged_in} first_name={this.state.first_name}
                 />) : (<EmployeeHomePage logged_in={this.state.logged_in}/>)}
 
             </div>

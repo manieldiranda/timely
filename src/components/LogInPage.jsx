@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import {withRouter} from "react-router-dom";
 import {InputText} from 'primereact/inputtext';
-import {motion, AnimatePresence} from "framer-motion"
+import {motion} from "framer-motion"
 import logInImage from '../images/undraw_creative_team_r90h (1).svg'
 import Alert from 'react-bootstrap/Alert';
 
@@ -108,19 +108,20 @@ class LogInPage extends Component {
                                         <div className="card-img-left d-none d-md-flex">
                                         </div>
                                         <div className="card-body">
-                                            <Alert variant="primary"
+                                             <Alert variant="primary"
                                                    show={this.state.showingInfoMessage}
                                                    onClose={this.toggleMessageShow}
-                                                   dismissible>
+                                                   dismissible
+                                            className={'logInInfoMessage desktopLogInInfoMessage'}>
                                                 <b> Demo Mode:</b>
                                                 <p> Admin Acc: admin/admin </p>
                                                 <p> User Acc: employee/coolpass1@ </p>
 
 
                                             </Alert>
-                                            <div className={'formContainer'}>
+                                            <div className={`formContainer`}>
                                                 <div className={'logInImageMobileContainer'}>
-                                                    <img className={'logInImageMobile'} src={logInImage}/>
+                                                    <img className={'logInImageMobile'} src={logInImage} alt={"welcomeImage"}/>
                                                 </div>
                                                 <h1 className="card-title"> Welcome to Timely</h1>
                                                 <form className="form-signin">
@@ -148,6 +149,17 @@ class LogInPage extends Component {
                                                     </Button>
                                                 </form>
                                             </div>
+                                             <Alert variant="primary"
+                                                   show={this.state.showingInfoMessage}
+                                                   onClose={this.toggleMessageShow}
+                                                   dismissible
+                                            className={'logInInfoMessage mobileLogInInfoMessage'}>
+                                                <b> Demo Mode:</b>
+                                                <p> Admin Acc: admin/admin </p>
+                                                <p> User Acc: employee/coolpass1@ </p>
+
+
+                                            </Alert>
                                         </div>
                                     </div>
                                 </div>

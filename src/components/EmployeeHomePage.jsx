@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import '../css/EmployeeHomePage.css';
 import NavBar from "./NavBar";
 import Accordion from 'react-bootstrap/Accordion'
@@ -9,12 +8,9 @@ import {LinkContainer} from 'react-router-bootstrap';
 import Moment from 'react-moment';
 import Alert from 'react-bootstrap/Alert'
 import axios from "axios";
-import Collapse from 'react-bootstrap/Collapse'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 
 const BASE_API_URL = process.env.REACT_APP_BASE_URL;
 
@@ -32,7 +28,6 @@ class EmployeeHomePage extends Component {
             }
         }
 
-        var moment = require('moment');
     }
 
     componentDidMount() {
@@ -188,7 +183,7 @@ class EmployeeHomePage extends Component {
                                 <Container>
                                     <Row>
                                         <Col className={'leftButtonColumn'} sm={12}
-                                             md={6}>  {this.state.profile.clocked_in == true ? (
+                                             md={6}>  {this.state.profile.clocked_in === true ? (
                                             <Button variant="primary" className={"timeEntryButton"} size="lg" disabled>
                                                 Clocked In
                                             </Button>) : (
@@ -199,7 +194,7 @@ class EmployeeHomePage extends Component {
                                         </Col>
                                         <Col className={'rightButtonColumn'} sm={12} md={6}>
 
-                                            {this.state.profile.clocked_in == false ? (
+                                            {this.state.profile.clocked_in === false ? (
                                                 <Button variant="secondary" className={"timeEntryButton"} size="lg"
                                                         disabled>
                                                     Clocked Out
@@ -249,7 +244,7 @@ class EmployeeHomePage extends Component {
                                                                 </Col>
                                                                 <Col className={'timeEntryDetailColumn'} xs={12} md={3}>
                                                                     <h6><b> Clock Out:</b></h6>
-                                                                    {clock_out == null ? (<p> Pending </p>) : (<Moment
+                                                                    {clock_out === null ? (<p> Pending </p>) : (<Moment
                                                                         format="hh:mm A">{clock_out}</Moment>)}
 
 

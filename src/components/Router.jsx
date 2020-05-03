@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter, Route, Link, withRouter} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import LogInPage from './LogInPage';
-import EmployeeHomePage from "./EmployeeHomePage";
-import axios from "axios";
 import HomePageContainer from "./HomePageContainer";
 
 import EmployeeProfile from "./EmployeeProfile";
 
-const BASE_API_URL = process.env.REACT_APP_BASE_URL;
 
 class Router extends Component {
     //CHECKING IF THE USER IS LOGGED IN BY CHECKING LOCALSTORAGE FOR TOKEN

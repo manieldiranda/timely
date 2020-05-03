@@ -61,7 +61,7 @@ body {
 }
 
 .card-signin {
-    top:3%;
+    top: 3%;
     border: 0;
     border-radius: 1rem;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
@@ -104,7 +104,7 @@ body {
 
 .formContainer {
     margin: auto;
-    padding-top: 5.5rem;
+    padding-top: 10.5rem;
     max-width: 25em;
 }
 
@@ -114,8 +114,8 @@ body {
 }
 
 .logInFormInput {
-    width:100%;
-        border: 1px solid #ced4da;
+    width: 100%;
+    border: 1px solid #ced4da;
     border-radius: .25rem;
     display: block;
     width: 100%;
@@ -129,46 +129,66 @@ body {
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .backgroundContainer {
-    height:100vh;
-    width:100vw;
-        background: linear-gradient(to right, #0062E6, #33AEFF);
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to right, #0062E6, #33AEFF);
 
 }
 
-
-@media (min-width: 750px){
-.logInImageMobile{
-display: none;
+.logInInfoMessage {
+    margin-bottom: -6.5em !important;
 }
 
+.card-signin .card-title {
+    font-size: 2.1em !important;
 }
 
-@media (max-width: 750px){
-.formContainer {
-    padding-top: 1rem;
-}
+@media (min-width: 750px) {
+    .logInImageMobile {
+        display: none;
+    }
+
+    .mobileLogInInfoMessage {
+        display: none;
+    }
+
 }
 
-.logInImageMobile{
-height:70%;
+@media (max-width: 750px) {
+    .formContainer {
+        padding-top: 1rem;
+    }
+
+
+    .desktopLogInInfoMessage {
+        display: none;
+    }
+
+    .mobileLogInInfoMessage {
+        margin-top: 3em;
+    }
+}
+
+.logInImageMobile {
+    height: 70%;
     width: 70%;
     margin: auto;
-    padding-bottom:2em;
+    padding-bottom: 2em;
 }
 
-.logInImageMobileContainer{
-text-align: center;
+.logInImageMobileContainer {
+    text-align: center;
 }
 
 .titleContainer {
     display: inline-flex;
 }
 
-.card-title{
-font-weight: 700;
+.card-title {
+    font-weight: 700;
     font-size: 10em;
 }

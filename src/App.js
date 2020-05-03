@@ -11,11 +11,7 @@ import './App.css'
 
 
 class App extends Component {
-    //CHECKING IF THE USER IS LOGGED IN BY CHECKING LOCALSTORAGE FOR TOKEN, and true loading spinner on by setting is loading to true
-    constructor(props) {
-        super(props);
 
-    }
 
 
 
@@ -24,7 +20,6 @@ class App extends Component {
     render() {
         return (
            <Router/>
-        // COMMENT TO SEE IF IT WORKS IN STASH
         );
     }
 }
