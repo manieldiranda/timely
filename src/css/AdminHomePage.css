@@ -24,6 +24,7 @@
 
 .loadingSpinnerContainer {
     text-align: center;
+    height:100vh;
     padding-top: 15em;
 }
 

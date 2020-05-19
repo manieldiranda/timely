@@ -4,16 +4,20 @@
     padding-top: 2em;
 }
 
-.employeeProfileCard{
+.employeeProfileCard {
     padding-top: 6rem;
+    width: 80%;
+
     max-width: 1200px;
     margin: auto;
 }
 
 .employeeProfileContainer {
-    height:100%;
-}.employeeProfileCardContainer {
-    height:100%;
+    height: 100%;
+}
+
+.employeeProfileCardContainer {
+    height: 100%;
 }
 
 
@@ -57,18 +61,18 @@
         display: inline;
     }
 
-    .desktopDeleteButtonContainer{
+    .desktopDeleteButtonContainer {
         display: none;
-        padding:0px;
+        padding: 0px;
     }
 
     .timeEntryDetailColumn {
-        padding-top:1em;
-        padding-bottom:1em;
+        padding-top: 1em;
+        padding-bottom: 1em;
     }
 
-    .employeeProfileCard{
-    width: 90%;
-}
+    .employeeProfileCard {
+        width: 90%;
+    }
 }
 

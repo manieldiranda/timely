@@ -5,6 +5,8 @@ import LogInPage from './LogInPage';
 import HomePageContainer from "./HomePageContainer";
 
 import EmployeeProfile from "./EmployeeProfile";
+import AdminHomePage from "./AdminHomePage";
+import EmployeeHomePage from "./EmployeeHomePage";
 
 
 class Router extends Component {
@@ -38,13 +40,21 @@ class Router extends Component {
                         exact
                         path={"/home"}
                         render={props => (
-                            <HomePageContainer
+                            <EmployeeHomePage
                                 logged_in={this.state.logged_in}
                             />
                         )}
                     />
-                     <Route exact path={"/employee/:id"} component={EmployeeProfile}/>
-
+                    <Route
+                        exact
+                        path={"/team"}
+                        render={props => (
+                            <AdminHomePage
+                                logged_in={this.state.logged_in}
+                            />
+                        )}
+                    />
+                    <Route exact path={"/employee/:id"} component={EmployeeProfile}/>
 
 
                 </BrowserRouter>

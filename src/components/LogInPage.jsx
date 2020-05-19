@@ -51,7 +51,14 @@ class LogInPage extends Component {
                     loading: true,
                     logged_in: true,
                 })
-                this.props.history.push("/home");
+
+                if (logInResponse.user.is_superuser === true) {
+                    this.props.history.push("/team");
+
+                } else {
+                    this.props.history.push("/home");
+
+                }
             })
             .catch((error) => {
                 localStorage.removeItem('token');
@@ -108,11 +115,11 @@ class LogInPage extends Component {
                                         <div className="card-img-left d-none d-md-flex">
                                         </div>
                                         <div className="card-body">
-                                             <Alert variant="primary"
+                                            <Alert variant="primary"
                                                    show={this.state.showingInfoMessage}
                                                    onClose={this.toggleMessageShow}
                                                    dismissible
-                                            className={'logInInfoMessage desktopLogInInfoMessage'}>
+                                                   className={'logInInfoMessage desktopLogInInfoMessage'}>
                                                 <b> Demo Mode:</b>
                                                 <p> Admin Acc: admin/admin </p>
                                                 <p> User Acc: employee/coolpass1@ </p>
@@ -121,7 +128,8 @@ class LogInPage extends Component {
                                             </Alert>
                                             <div className={`formContainer`}>
                                                 <div className={'logInImageMobileContainer'}>
-                                                    <img className={'logInImageMobile'} src={logInImage} alt={"welcomeImage"}/>
+                                                    <img className={'logInImageMobile'} src={logInImage}
+                                                         alt={"welcomeImage"}/>
                                                 </div>
                                                 <h1 className="card-title"> Welcome to Timely</h1>
                                                 <form className="form-signin">
@@ -149,11 +157,11 @@ class LogInPage extends Component {
                                                     </Button>
                                                 </form>
                                             </div>
-                                             <Alert variant="primary"
+                                            <Alert variant="primary"
                                                    show={this.state.showingInfoMessage}
                                                    onClose={this.toggleMessageShow}
                                                    dismissible
-                                            className={'logInInfoMessage mobileLogInInfoMessage'}>
+                                                   className={'logInInfoMessage mobileLogInInfoMessage'}>
                                                 <b> Demo Mode:</b>
                                                 <p> Admin Acc: admin/admin </p>
                                                 <p> User Acc: employee/coolpass1@ </p>

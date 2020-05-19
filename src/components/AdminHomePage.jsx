@@ -120,16 +120,11 @@ class AdminHomePage extends Component {
         return (
 
             <div>
-                <motion.div
-                    initial={{y: -100}}
-                    animate={{y: -0}}
-                    transition={{duration: 1}}
-                >
+
 
                     <NavBar logged_in={this.props.logged_in}/>
-                </motion.div>
 
-                <div className="adminPanelCard">
+                <div >
                     {this.state.loading === true ? (
                         <div className={'loadingSpinnerContainer'}>
                             <Spinner className={'loadingSpinner'} animation="border" variant="primary"/>
